@@ -5,9 +5,23 @@
                 <h2 class="text-2xl">Save / Load</h2>
             </header>
             <section class="bg-white dark:bg-plain-gray py-5 px-4">
-                <input type="file" class="text-gray-800 dark:text-gray-200" @change="onFileChange" />
+                <input
+                    type="file"
+                    class="text-gray-800 dark:text-gray-200"
+                    @change="onFileChange"
+                />
             </section>
-            <footer class="flex justify-between md:justify-start bg-gray-100 dark:bg-plain-gray-light p-4 rounded-b-lg">
+            <footer
+                class="
+                    flex
+                    justify-between
+                    md:justify-start
+                    bg-gray-100
+                    dark:bg-plain-gray-light
+                    p-4
+                    rounded-b-lg
+                "
+            >
                 <button
                     @click="save"
                     class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
@@ -16,7 +30,16 @@
                 </button>
                 <button
                     @click="close(true)"
-                    class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded ml-2 disabled:opacity-50"
+                    class="
+                        px-4
+                        py-2
+                        bg-blue-500
+                        hover:bg-blue-600
+                        text-white
+                        rounded
+                        ml-2
+                        disabled:opacity-50
+                    "
                     :disabled="!file"
                 >
                     Load

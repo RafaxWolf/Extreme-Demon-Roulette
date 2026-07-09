@@ -1,4 +1,4 @@
-import { PointercrateDemon } from './types';
+import { PointercrateDemon } from '../models/types';
 
 export function shuffle<T>(a: T[]): T[] {
     for (let i = a.length - 1; i > 0; i--) {
@@ -46,6 +46,7 @@ export function fakeDemonName(): string {
         'death',
         'killing',
     ];
+
     const nouns = [
         'day',
         'city',
@@ -59,6 +60,7 @@ export function fakeDemonName(): string {
         'v2',
         'chamber',
     ];
+    
     let name = [];
     if (Math.random() > 0.5) name.push('The');
     name.push(adjectives[Math.floor(Math.random() * adjectives.length)]);

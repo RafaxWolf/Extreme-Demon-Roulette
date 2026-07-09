@@ -3,7 +3,11 @@
         class="flex flex-col md:flex-row p-5 shadow-lg w-full"
         :class="{ 'fade-in-up': animate }"
     >
-        <a :href="demon.video ? `https://youtu.be/${demon.video}` : '#'" target="_blank" rel="noopener noreferrer">
+        <a
+            :href="demon.video ? `https://youtu.be/${demon.video}` : '#'"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
             <img
                 class="w-full md:w-48 md:h-28"
                 loading="lazy"
@@ -19,7 +23,14 @@
                     rel="noopener noreferrer"
                 >
                     <header
-                        class="text-xl md:text-3xl font-medium text-gray-900 dark:text-gray-200 hover:underline"
+                        class="
+                            text-xl
+                            md:text-3xl
+                            font-medium
+                            text-gray-900
+                            dark:text-gray-200
+                            hover:underline
+                        "
                     >
                         #{{ demon.position }} - {{ demon.name }}
                     </header>
@@ -30,7 +41,14 @@
             </div>
             <div v-if="active && demon.levelID">
                 <div
-                    class="text-gray-400 hover:text-gray-600 active:text-gray-900 hover:cursor-pointer mt-3 ml-2"
+                    class="
+                        text-gray-400
+                        hover:text-gray-600
+                        active:text-gray-900
+                        hover:cursor-pointer
+                        mt-3
+                        ml-2
+                    "
                     @click="clipboardCopy"
                 >
                     <copy-icon size="1.1x"></copy-icon>
@@ -44,7 +62,16 @@
             <div class="flex flex-col w-full md:w-auto">
                 <input
                     type="number"
-                    class="border rounded border-gray-200 dark:border-gray-600 dark:text-gray-100 shadow-inner p-2 dark:bg-plain-gray-light"
+                    class="
+                        border
+                        rounded
+                        border-gray-200
+                        dark:border-gray-600
+                        dark:text-gray-100
+                        shadow-inner
+                        p-2
+                        dark:bg-plain-gray-light
+                    "
                     :placeholder="`At least ${currentPercent}%`"
                     v-model="iptPercent"
                 />
@@ -94,7 +121,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue';
-import { SimplifiedDemon } from '../types';
+import { SimplifiedDemon } from '../models/types';
 import { CopyIcon } from '@zhuowenli/vue-feather-icons';
 
 export default defineComponent({

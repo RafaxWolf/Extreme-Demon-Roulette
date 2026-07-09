@@ -4,7 +4,17 @@
             <header class="bg-white dark:bg-plain-gray dark:text-gray-200 p-4 rounded-t">
                 <h2 class="text-2xl">Are you sure?</h2>
             </header>
-            <footer class="flex justify-between md:justify-start bg-gray-100 dark:bg-plain-gray-light p-4 rounded-b">
+            <footer
+                class="
+                    flex
+                    justify-between
+                    md:justify-start
+                    bg-gray-100
+                    dark:bg-plain-gray-light
+                    p-4
+                    rounded-b
+                "
+            >
                 <button
                     @click="giveUp"
                     class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
