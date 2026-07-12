@@ -7,7 +7,7 @@
         "build": "vue-tsc --noEmit && vite build",
         "serve": "vite preview",
         "pretty": "prettier --write .",
-        "update-demon-list": "tsx scripts/update-demon-list.ts"
+        "update-db": "tsx scripts/update-demon-db.ts"
     },
     "dependencies": {
         "@msgpack/msgpack": "^2.6.3",

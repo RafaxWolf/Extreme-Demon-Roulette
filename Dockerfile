@@ -10,6 +10,6 @@ COPY . .
 
 EXPOSE 3000
 
-RUN npm run update-demon-list
+RUN npm run update-db
 
 CMD [ "npm", "run", "build" ]

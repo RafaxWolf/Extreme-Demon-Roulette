@@ -3,8 +3,8 @@ import path from "node:path";
 
 const output_path = path.join(process.cwd(), 'public', 'cache', 'demon-list.json')
 
-const page_size = 100
-const max_demons = 1000
+const PAGE_SIZE = 100
+const MAX_DEMONS = 1000
 
 async function fetchPage(after: number, limit: number) {
     const params = new URLSearchParams({
@@ -12,17 +12,17 @@ async function fetchPage(after: number, limit: number) {
     })
 
     if(after > 0) {
-        params.set('after', String(after))
+        params.set('offset', String(after))
     }
 
-    const url = `https://pointercrate.com/api/v2/demons/listed/?${params.toString()}`
+    const url = `https://api.demonlist.org/level/classic/list/?${params.toString()}`
 
     const response = await fetch(url, {
         headers: {
             Accept: 'application/json',
             'User-Agent': 'Mozilla/5.0',
-        }
-    })
+        },
+    });
 
     if (!response.ok) {
         const txtError = await response.text()
@@ -33,44 +33,44 @@ async function fetchPage(after: number, limit: number) {
 }
 
 async function main() {
-    const demons: unknown[] = []
+    const demons: unknown[] = [];
 
-    for (let after = 0; after < max_demons; after += page_size) {
-        console.log(`Downloading demon list after: ${after}...`);
+    for (let after = 0; after < MAX_DEMONS; after += PAGE_SIZE) {
+        console.log(`Descargando demonios desde after=${after}...`);
 
-        const page = await fetchPage(after, page_size)
+        const page = await fetchPage(after, PAGE_SIZE);
 
-        if(!Array.isArray(page) || page.length === 0) {
+        if (!Array.isArray(page) || page.length === 0) {
             break;
         }
 
-        demons.push(...page)
+        demons.push(...page);
 
-        if(page.length < page_size) {
+        if (page.length < PAGE_SIZE) {
             break;
         }
     }
 
     fs.mkdirSync(path.dirname(output_path), { recursive: true })
+
     fs.writeFileSync(
         output_path, 
         JSON.stringify(
             { 
                 updatedt: new Date().toISOString(),
-                source: `https://pointercrate.com/api/v2/demons/listed/`,
+                source: `https://api.demonlist.org/level/classic/list`,
                 total: demons.length,
                 demons
             }, null, 2
-        ), 'utf-8'
+        ),
+        'utf-8'
     )
 
     console.log(`Demon List updated with ${demons.length} Demons.`)
 }
 
 // Script Execution
-try {
-    main()
-} catch (e) {
-    console.error(e)
+main().catch(err => {
+    console.error(err)
     process.exit(1)
-}
+})
