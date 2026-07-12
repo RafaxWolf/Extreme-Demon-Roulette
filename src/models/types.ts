@@ -1,4 +1,5 @@
-export interface PointercrateDemon {
+/* Old API Interface
+ export interface PointercrateDemon {
     id: number;
     level_id: number;
     name: string;
@@ -15,6 +16,36 @@ export interface PointercrateDemon {
         banned: boolean;
     };
     video: string | null;
+} */
+
+export interface DemonListAPI{
+    message: string
+    data: {
+        levels: DemonListLevel[]
+    }
+}
+
+export interface DemonListLevel {
+    id: number
+    level_id: number
+    position: number
+    name: string
+    publisher: DemonPublisher
+    requirement?: number
+    verifier: DemonVerifier
+    video: string | null
+}
+
+export interface DemonPublisher {
+    id?: number
+    name: string
+    banned?: boolean
+}
+
+export interface DemonVerifier {
+    id: number
+    name: string
+    banned?: boolean
 }
 
 export interface SimplifiedDemon {
@@ -26,13 +57,15 @@ export interface SimplifiedDemon {
     link?: string;
 }
 
+export interface SelectedLists {
+    main: boolean;
+    extended: boolean;
+    legacy: boolean;
+}
+
 export interface RouletteState {
     playing: boolean;
-    selectedLists: {
-        main: boolean;
-        extended: boolean;
-        legacy: boolean;
-    };
+    selectedLists: SelectedLists
     demons: SimplifiedDemon[];
     current: number;
     percent: number;

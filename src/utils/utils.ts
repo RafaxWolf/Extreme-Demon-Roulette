@@ -1,4 +1,4 @@
-import { PointercrateDemon } from '../models/types';
+import { DemonListLevel } from '../models/types';
 
 export function shuffle<T>(a: T[]): T[] {
     for (let i = a.length - 1; i > 0; i--) {
@@ -13,7 +13,7 @@ export function clearArray(a: any[]) {
 }
 
 // stupid pointercrate keeps going down
-export function fakeDemon(name: string, creator: string, video: string | null): PointercrateDemon {
+export function fakeDemon(name: string, creator: string, video: string | null): DemonListLevel {
     return {
         id: 1,
         level_id: Math.floor(Math.random() * 1000000),

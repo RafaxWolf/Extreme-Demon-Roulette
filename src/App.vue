@@ -205,7 +205,7 @@ export default defineComponent({
 
         async function start() {
 
-            console.log('Starting Extreme Demon Roulette >:}');
+            console.log('Starting Extreme Demon Roulette...');
 
             if (fetching.value) return;
             if (!Object.values(selectedLists).some(i => i)) return;

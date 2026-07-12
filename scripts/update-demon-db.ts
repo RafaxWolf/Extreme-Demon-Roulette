@@ -12,17 +12,12 @@ async function fetchPage(after: number, limit: number) {
     })
 
     if(after > 0) {
-        params.set('offset', String(after))
+        params.set('after', String(after))
     }
 
-    const url = `https://api.demonlist.org/level/classic/list/?${params.toString()}`
+    const url = `https://pointercrate.com/v2/demons/listed/?${params.toString()}`
 
-    const response = await fetch(url, {
-        headers: {
-            Accept: 'application/json',
-            'User-Agent': 'Mozilla/5.0',
-        },
-    });
+    const response = await fetch(url);
 
     if (!response.ok) {
         const txtError = await response.text()

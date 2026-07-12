@@ -1,9 +1,9 @@
 import { encode, decode } from '@msgpack/msgpack';
 import { inflateSync, deflateSync, strFromU8, unzlibSync } from 'fflate';
 import { base64ToBytes } from 'byte-base64';
-import type { PointercrateDemon, SimplifiedDemon, RouletteState } from './types';
+import type { DemonListLevel, SimplifiedDemon, RouletteState } from '../models/types';
 
-export function simplifyDemon(demon: PointercrateDemon): SimplifiedDemon {
+export function simplifyDemon(demon: DemonListLevel): SimplifiedDemon {
     const match = demon.video?.match(/https:\/\/www\.youtube\.com\/watch\?v=(.{11})/);
     return {
         name: demon.name,
