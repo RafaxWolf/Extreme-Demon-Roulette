@@ -1,4 +1,4 @@
-/* Old API Interface
+/* Old API Handler
  export interface PointercrateDemon {
     id: number;
     level_id: number;
