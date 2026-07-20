@@ -159,7 +159,8 @@ import { RouletteState, SimplifiedDemon } from './models/types';
 import { shuffle, clearArray } from './utils/utils';
 import { unloadHandler } from './unloadHandler';
 import { veryOldDemons } from './data/veryOldList';
-import { simplifyDemon, compressState, decompressState } from './utils/save';
+import { compressState, decompressState } from './utils/save';
+import { simplifyDemon } from './services/demonMapper';
 import { saveAs } from 'file-saver';
 
 export default defineComponent({
@@ -181,7 +182,7 @@ export default defineComponent({
 
         async function fetchDemons( after: number = 0, limit: number = 100 ): Promise<SimplifiedDemon[]> {
             const response = await fetch(
-                `/pointercrate-api/v2/demons/listed/?limit=${limit}&after=${after}`
+                `https://pointercrate.com/api/v2/demons/listed/?limit=${limit}&after=${after}`
             );
 
             if (!response.ok) {

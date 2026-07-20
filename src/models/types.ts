@@ -1,5 +1,5 @@
-/* Old API Handler
- export interface PointercrateDemon {
+//Old API Handler
+export interface PointercrateDemon {
     id: number;
     level_id: number;
     name: string;
@@ -16,7 +16,7 @@
         banned: boolean;
     };
     video: string | null;
-} */
+}
 
 export interface DemonListAPI{
     message: string
